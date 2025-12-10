@@ -158,28 +158,36 @@ CTree 使用 `.treeignore` 文件过滤不需要显示的文件或目录，规�
 
 ## 🧪 Examples / 使用示例
 
-### Example 1: Export project tree while ignoring build artifacts  
-### 示例 1：导出项目结构并忽略构建产物
+### 
+### 示例1：导入 `.gitignore` 规则，获取你的项目结构
 ```cmd
-CTree.exe -i "D:\MyProject" -o -n "node_modules/" -n "/dist" -n "*.log"
+CTree.exe -i "C:\YourProject" -f "C:\YourProject\.gitignore" -n ".git/" -c
+```
+→ Filter the project content based on the specified `.gitignore` file. Additionally, forcibly ignore the `.git/` directory (as some projects are not explicitly declared in the .gitignore file). Display the directory tree in real-time in the terminal and automatically copy the complete result to the clipboard, making it convenient to paste it into an Issue, document, or AI conversation with just one click.  
+→ 根据指定的 `.gitignore` 文件过滤项目内容，额外强制忽略 `.git/` 目录（因部分项目未在 `.gitignore` 中显式声明），在终端实时显示目录树，并自动将完整结果复制到剪贴板，方便一键粘贴到 Issue、文档或 AI 对话中。
+
+### Example 2: Export project tree while ignoring build artifacts  
+### 示例 2：导出项目结构并忽略构建产物
+```cmd
+CTree.exe -i "D:\YourProject" -o -n "node_modules/" "/dist" "*.log"
 ```
 → Generates `tree_20251210_210000.txt`, excluding `node_modules`, root-level `dist`, and log files.  
 → 自动生成 `tree_20251210_210000.txt`，排除 `node_modules`、根目录 `dist` 和日志文件。
 
-### Example 2: Copy README.md content to clipboard  
-### 示例 2：将 README.md 内容复制到剪贴板
+### Example 3: Copy README.md content to clipboard  
+### 示例 3：将 README.md 内容复制到剪贴板
 ```cmd
-CTree.exe -c "D:\MyProject\README.md"
+CTree.exe -c "D:\YourProject\README.md"
 ```
 
-### Example 3: Generate tree and copy directly to clipboard  
-### 示例 3：生成树并直接复制到剪贴板（用于粘贴到聊天或文档）
+### Example 4: Generate tree and copy directly to clipboard  
+### 示例 4：生成树并直接复制到剪贴板（用于粘贴到聊天或文档）
 ```cmd
 CTree.exe -i "C:\Code\App" -c
 ```
 
-### Example 4: Initialize a local ignore file  
-### 示例 4：初始化本地忽略规则
+### Example 5: Initialize a local ignore file  
+### 示例 5：初始化本地忽略规则
 ```cmd
 CTree.exe -l
 ```
