@@ -164,6 +164,20 @@ A：可以。使用 `*.test` 可匹配任意层级的 `test` 文件。`**` 支�
 A: The native `tree` lacks ignore rules, often breaks with non-ASCII names, and cannot copy content. CTree is purpose-built for modern development workflows.  
 A：系统自带 `tree` 不支持忽略规则、中文易乱码、无法复制内容。CTree 专为现代开发场景优化。
 
+**Q: Which version is recommended for use?**  
+**Q：推荐使用哪个版本？**  
+A: We highly recommend the x86 (32-bit) version.  
+A: 强烈推荐使用 x86（32 位）版本。  
+
+CTree is an I/O-intensive tool focused on directory traversal. The 32-bit build uses smaller pointers and a more compact memory layout, which often leads to better performance when scanning directories with thousands of files—thanks to higher CPU cache efficiency.  
+CTree 是一款以目录遍历为核心的 I/O 密集型工具。32 位版本因指针更小、内存布局更紧凑，在扫描包含大量文件的目录时，往往因更高的 CPU 缓存命中率而表现更优。  
+
+Additionally, the x86 version runs perfectly on all Windows 7 and later systems (both 32-bit and 64-bit) via the built-in WOW64 compatibility layer—no drawbacks, just wider compatibility and better real-world speed.  
+此外，x86 版本通过 Windows 内置的 WOW64 兼容层，可在所有 Windows 7 及以上系统（包括 64 位）上完美运行——兼容性更强，实际速度更快，毫无劣势。  
+
+> 💡 Tip: Unless you have a specific requirement for a native 64-bit executable, choose CTree-**-win-x86.zip.  
+> 💡 提示：除非你明确需要原生 64 位程序，否则请优先选择 CTree-**-win-x86.zip。  
+
 ---
 
 ## 📜 License / 许可证
@@ -179,12 +193,3 @@ This project is licensed under the [MIT License](LICENSE)—free for personal an
 > 如果你有功能建议、发现 Bug，或希望支持更多格式（如 JSON/YAML 输出、PowerShell 别名），请提交 Issue 或 PR。
 
 ---
-
-✅ **此版本特点**：
-
-- **严格中英对照**：每一段、每一个列表项、每一个表格单元格都包含中英文。
-- **保留技术准确性**：术语统一（如 “root anchor” ↔ “根锚定”）。
-- **排版清晰**：使用 Markdown 表格、代码块、引用等提升可读性。
-- **适合 GitHub / Gitee**：兼容主流代码托管平台渲染。
-
-你可以直接将此 Markdown 用作 `README.md`。如果需要 PDF 版、网页版，或想添加多语言（如日语、西班牙语），也可以告诉我！
