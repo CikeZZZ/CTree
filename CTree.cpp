@@ -41,7 +41,7 @@ const std::wstring PARENT_MENU_NAME = L"CikeZZZ";
 const std::wstring MENU_TREE_KEY = L"CTree";
 const std::wstring MENU_COPY_KEY = L"CopyContent";
 const std::wstring IGNORE_FILENAME = L".treeignore";
-const std::wstring VERSION = L"1.0.1";
+const std::wstring VERSION = L"1.0.0";
 
 enum class Lang { CN, EN };
 
