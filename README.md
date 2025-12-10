@@ -23,6 +23,72 @@ It is built specifically for developers: not only can it quickly export project 
 
 ---
 
+
+## 🌳 Output Example / 输出示例
+
+CTree 生成的目录树采用**标准的树形缩进符号**（`├──`、`└──`、`│`），清晰展示嵌套层级，并**完美支持Unicode路径与文件名**：
+
+```text
+CTreeTest\
+├── New Folder\
+│   ├── 新建文件夹\
+│   │   ├── 1.png
+│   │   ├── 2.jpg
+│   │   └── .cpp
+│   ├── 1.png
+│   ├── 2.jpg
+│   └── かんが.cpp
+├── New Folder\
+│   └── Test\
+│       ├── 새폴더만들기\
+│       │   ├── New Folder\
+│       │   │   ├── 1.png
+│       │   │   ├── 5.txt
+│       │   │   └── test.cpp
+│       │   ├── 4.jpeg
+│       │   └── test.cpp
+│       ├── 1.png
+│       ├── 2.jpg
+│       ├── изображение.svg
+│       └── test.cpp
+├── 1.png
+├── 2.jpg
+└── 测试.cpp
+```
+
+---
+
+## 🚀 Quick Start / 快速开始
+
+### Installation & Integration (Portable, No Installer)  
+### 安装与集成（绿色便携，无需安装）
+
+1. **下载 `CTree.exe`**  
+   👉 从 [GitHub Releases](https://github.com/CikeZZZ/CTree/releases) 页面下载 **`CTree-*-win-x86.zip`**（推荐 32 位版本，兼容性更好、性能更优）。
+
+2. **解压并放置**  
+   将 `CTree.exe` 放入任意目录（如 `D:\Tools\`），**建议将其所在路径加入系统 `PATH` 环境变量**，以便全局调用。
+
+3. **启用右键菜单（可选但推荐）**  
+   双击运行 `CTree.exe`，在交互界面中输入 `1`，即可注册两个便捷功能：  
+   - **在文件夹空白处右键** → “生成目录树文件”  
+   - **在任意文本文件上右键** → “复制文件内容”
+
+4. **随时移除**  
+   再次运行 `CTree.exe` 并输入 `2`，即可**干净卸载**所有右键菜单项（仅修改当前用户注册表，无残留）。
+
+> 🛡️ **安全说明**：CTree 不安装驱动、不启动后台服务、不联网，完全绿色可信。
+
+---
+
+这样调整后：
+- 示例和功能之间有**自然过渡**
+- 强调了“可直接粘贴”的实用性
+- 快速开始步骤更**引导式、用户友好**
+- 补充了**安全 & 推荐版本**提示
+
+主人觉得如何？需要我帮你把整篇 README 按这个风格统一润色一遍吗？💕
+
 ## 🚀 Quick Start / 快速开始
 
 ### Installation & Integration (Portable, No Installer)  
