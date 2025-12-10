@@ -1,5 +1,5 @@
 // ============================================================================
-// CTree - 目录树生成工具 v1.0.1
+// CTree - 目录树生成工具 v1.0.0
 // ============================================================================
 // 功能：生成文件夹结构树，支持 .gitignore 语法忽略，支持右键菜单，支持剪贴板
 // 兼容：Windows 7+ (MSVC 编译)
@@ -83,13 +83,13 @@ struct Strings {
                 L"用法: CTree [命令] [参数]\n"
                 L"  -h, --help                 显示此帮助消息\n"
                 L"  -v, --version              显示软件版本\n"
-                L"  -i, --input <path>         指定输入目录\n"
+                L"  -i, --input <path>         指定输入目录 <path>\n"
                 L"  -o, --output [path]        1. 输出到文件（可选路径；若省略，则生成带时间戳的文件）\n"
                 L"                             2. 若未指定 -o，默认输出到终端\n"
                 L"  -c, --copy [path]          1. 配合 -i 使用：不指定 [path] 时，将生成的目录树复制到剪贴板\n"
                 L"                             2. 指定 [path] 时：将该文件内容复制到剪贴板\n"
                 L"  -n, --ignore [pattern] ... 临时添加忽略规则（可多次使用）\n"
-                L"  -f, --file <path>          使用指定的忽略配置文件（兼容大部分 .gitignore 语法）\n"
+                L"  -f, --file <path>          使用指定的忽略配置文件（兼容 .gitignore 语法）\n"
                 L"  -g, --global               创建全局 .treeignore 配置文件\n"
                 L"  -l, --local                在当前目录创建本地 .treeignore 配置文件\n"
                 L"  -d, --delete-global        删除全局 .treeignore 配置文件\n"
@@ -105,7 +105,7 @@ struct Strings {
                 L"  -c, --copy [path]          1. With -i: omit [path] to copy the generated tree to clipboard\n"
                 L"                             2. If [path] is provided, copy its content to clipboard\n"
                 L"  -n, --ignore [pattern] ... Add temporary ignore patterns (can be used multiple times)\n"
-                L"  -f, --file <path>          Use an explicit ignore config file (Compatible with most.gitignore syntax)\n"
+                L"  -f, --file <path>          Use an explicit ignore config file (compatible with .gitignore syntax)\n"
                 L"  -g, --global               Create global .treeignore config file\n"
                 L"  -l, --local                Create local .treeignore config file in current directory\n"
                 L"  -d, --delete-global        Delete global .treeignore config file\n"
@@ -310,15 +310,24 @@ class MultiWriter {
     std::ostream* _console = nullptr;
     std::ostream* _file = nullptr;
     std::wstringstream* _clipboard = nullptr;
+
+    // 存储换行符（UTF-8 字节形式）
+    std::string _lineEnding = "\n";  // 默认 LF
+
 public:
     void setConsole(std::ostream& os) { _console = &os; }
     void setFile(std::ostream& os) { _file = &os; }
     void setClipboard(std::wstringstream& ss) { _clipboard = &ss; }
 
+    // 配置换行符
+    void setLineEndingToCRLF() {
+        _lineEnding = "\r\n";
+    }
+
     void writeLine(const std::wstring& wLine) {
         std::string u8Line = to_utf8(wLine);
-        if (_console) *_console << u8Line << '\n';
-        if (_file)    *_file << u8Line << '\n';
+        if (_console) *_console << u8Line << _lineEnding;
+        if (_file)    *_file << u8Line << _lineEnding;
         if (_clipboard) *_clipboard << wLine << L'\n';
     }
 };
@@ -693,6 +702,10 @@ void RunTreeGeneration(const AppConfig& cfg) {
     std::wstringstream wClipBuffer;
     if (cfg.CopyFlag) writer.setClipboard(wClipBuffer);
 
+#ifdef _WIN32
+    writer.setLineEndingToCRLF();
+#endif
+
     // 3. 执行
     std::wstring rootName = cfg.inputPath.filename().wstring();
     if (rootName.empty()) rootName = cfg.inputPath.wstring();
@@ -723,7 +736,10 @@ void RunFileContentCopy(const fs::path& filePath) {
 // ============================================================================
 
 int wmain(int argc, wchar_t* argv[]) {
-    SetConsoleOutputCP(65001); // UTF-8 Console
+    // 启用 UTF-8 全流程支持
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+
     AppConfig config;
     config.parse(argc, argv);
 
