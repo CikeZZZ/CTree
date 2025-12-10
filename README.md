@@ -169,11 +169,11 @@ A：系统自带 `tree` 不支持忽略规则、中文易乱码、无法复制�
 A: We highly recommend the x86 (32-bit) version.  
 A: 强烈推荐使用 x86（32 位）版本。  
 
-CTree is an I/O-intensive tool focused on directory traversal. The 32-bit build uses smaller pointers and a more compact memory layout, which often leads to better performance when scanning directories with thousands of files—thanks to higher CPU cache efficiency.  
-CTree 是一款以目录遍历为核心的 I/O 密集型工具。32 位版本因指针更小、内存布局更紧凑，在扫描包含大量文件的目录时，往往因更高的 CPU 缓存命中率而表现更优。  
+* CTree is an I/O-intensive tool focused on directory traversal. The 32-bit build uses smaller pointers and a more compact memory layout, which often leads to better performance when scanning directories with thousands of files—thanks to higher CPU cache efficiency.  
+* CTree 是一款以目录遍历为核心的 I/O 密集型工具。32 位版本因指针更小、内存布局更紧凑，在扫描包含大量文件的目录时，往往因更高的 CPU 缓存命中率而表现更优。  
 
-Additionally, the x86 version runs perfectly on all Windows 7 and later systems (both 32-bit and 64-bit) via the built-in WOW64 compatibility layer—no drawbacks, just wider compatibility and better real-world speed.  
-此外，x86 版本通过 Windows 内置的 WOW64 兼容层，可在所有 Windows 7 及以上系统（包括 64 位）上完美运行——兼容性更强，实际速度更快，毫无劣势。  
+* Additionally, the x86 version runs perfectly on all Windows 7 and later systems (both 32-bit and 64-bit) via the built-in WOW64 compatibility layer—no drawbacks, just wider compatibility and better real-world speed.  
+* 此外，x86 版本通过 Windows 内置的 WOW64 兼容层，可在所有 Windows 7 及以上系统（包括 64 位）上完美运行——兼容性更强，实际速度更快，毫无劣势。  
 
 > 💡 Tip: Unless you have a specific requirement for a native 64-bit executable, choose CTree-**-win-x86.zip.  
 > 💡 提示：除非你明确需要原生 64 位程序，否则请优先选择 CTree-**-win-x86.zip。  
