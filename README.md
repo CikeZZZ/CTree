@@ -25,10 +25,8 @@ It is designed for developers, supporting `.gitignore`-like ignore rules and int
 
 ## 🚀 使用方法 (Usage)
 
-* 加入环境变量  
-* Add environment variables  
-* 添加进右键菜单  
-* Add to the right-click menu  
+* 建议加入环境变量使用  
+* It is recommended to add environment variables for use.
 
 ### 命令行参数 (Command Line Arguments)
 
