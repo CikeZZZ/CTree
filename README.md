@@ -115,7 +115,7 @@ CTree.exe [command] [options]
 | `-n, --ignore <pattern>` | Add temporary ignore patterns (can be used multiple times).<br>临时添加忽略规则（可多次使用，如 `-n "*.log" -n "/temp"`）。 |
 | `-g, --global` | Create a global `.treeignore` template in `%USERPROFILE%`.<br>在用户目录（`%USERPROFILE%`）创建全局 `.treeignore` 模板。 |
 | `-l, --local` | Create a local `.treeignore` template in the current working directory.<br>在当前工作目录创建本地 `.treeignore` 模板。 |
-| `-d, --delete-global` | Remove the global .treeignore file from %USERPROFILE% if it exists.<br>若存在，则从 %USERPROFILE% 中移除全局 .treeignore 文件。 |
+| `-d, --delete-global` | Remove the global `.treeignore` file from %USERPROFILE% if it exists.<br>若存在，则从 %USERPROFILE% 中移除全局 `.treeignore` 文件。 |
 
 ---
 
