@@ -72,11 +72,8 @@ CTreeTest\
 
 2. **Add to Right-Click Menu**  
    **添加右键菜单**：  
-   ```cmd
-   CTree.exe
-   ```
-   In the interactive menu, enter `1` to register two context menu items:  
-   在交互界面中输入 `1`，注册以下两个右键功能：  
+   双击运行 `CTree.exe` 或在命令行中执行 `CTree.exe`。  
+   在交互界面中输入 `1`，即可注册以下两个右键功能：  
    - Right-click on **a folder** or **folder background** → “Generate Tree File”  
      在**文件夹上**或**目录空白处右键** → “生成目录树文件”  
      > 📌 *Smart location detection*:  
@@ -91,11 +88,9 @@ CTreeTest\
 
 3. **Remove from Right-Click Menu**  
    **移除右键菜单**：  
-   Run `CTree.exe` and enter `2` to cleanly remove all registry entries.  
-   运行 `CTree.exe` 并输入 `2`，即可彻底清理注册表残留。
-
-> 💡 **Note**: Context menu integration modifies only the current user’s registry hive and leaves no background processes.  
-> 💡 **注**：右键菜单仅修改当前用户的注册表，无后台进程，安全可靠。
+   运行 `CTree.exe` 并在交互界面中输入 `2`，即可彻底清理所有注册表项，无残留。  
+   > 💡 **Note**: Integration only modifies the current user’s registry and leaves no background processes.  
+   > 💡 **注**：右键菜单仅修改当前用户注册表，无后台进程，安全可靠。
 
 ---
 
