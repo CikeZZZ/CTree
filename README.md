@@ -163,7 +163,7 @@ CTree 使用 `.treeignore` 文件过滤不需要显示的文件或目录，规�
 ```cmd
 CTree.exe -i "C:\YourProject" -f "C:\YourProject\.gitignore" -n ".git/" -c
 ```
-→ Filter the project content based on the specified `.gitignore` file. Additionally, forcibly ignore the `.git/` directory (as some projects are not explicitly declared in the .gitignore file). Display the directory tree in real-time in the terminal and automatically copy the complete result to the clipboard, making it convenient to paste it into an Issue, document, or AI conversation with just one click.  
+→ Filter the project content based on the specified `.gitignore` file. Additionally, forcibly ignore the `.git/` directory (as some projects are not explicitly declared in the `.gitignore` file). Display the directory tree in real-time in the terminal and automatically copy the complete result to the clipboard, making it convenient to paste it into an Issue, document, or AI conversation with just one click.  
 → 根据指定的 `.gitignore` 文件过滤项目内容，额外强制忽略 `.git/` 目录（因部分项目未在 `.gitignore` 中显式声明），在终端实时显示目录树，并自动将完整结果复制到剪贴板，方便一键粘贴到 Issue、文档或 AI 对话中。
 
 ### Example 2: Export project tree while ignoring build artifacts  
