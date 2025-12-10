@@ -175,8 +175,8 @@ A: 强烈推荐使用 x86（32 位）版本。
 * Additionally, the x86 version runs perfectly on all Windows 7 and later systems (both 32-bit and 64-bit) via the built-in WOW64 compatibility layer—no drawbacks, just wider compatibility and better real-world speed.  
 * 此外，x86 版本通过 Windows 内置的 WOW64 兼容层，可在所有 Windows 7 及以上系统（包括 64 位）上完美运行——兼容性更强，实际速度更快，毫无劣势。  
 
-> 💡 Tip: Unless you have a specific requirement for a native 64-bit executable, choose CTree-**-win-x86.zip.  
-> 💡 提示：除非你明确需要原生 64 位程序，否则请优先选择 CTree-**-win-x86.zip。  
+> 💡 Tip: Unless you have a specific requirement for a native 64-bit executable, choose `CTree-*-win-x86.zip`.  
+> 💡 提示：除非你明确需要原生 64 位程序，否则请优先选择 `CTree-*-win-x86.zip`。  
 
 ---
 
