@@ -3,11 +3,18 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-CTree is a lightweight, high-performance command-line tool for Windows 7 and above, designed to generate clean and readable directory structure trees.  
-CTree 是一款轻量级、高性能的命令行工具，支持 Windows 7 及以上系统，用于生成清晰美观的文件目录结构树。
+CTree is a lightweight, high-performance command-line tool for Windows 7 and above, designed to generate clean, readable, and Unicode-safe directory structure trees — **with zero runtime dependencies**.  
+CTree 是一款轻量级、高性能的命令行工具，支持 Windows 7 及以上系统，用于生成清晰、美观、全 Unicode 兼容的目录结构树——**无需任何运行时依赖**。
 
-It is built specifically for developers: not only can it quickly export project structures, but it also supports copying file contents to the clipboard with one click—ideal for writing technical documentation, submitting issues, or providing code context to AI assistants.  
-它专为开发者打造：不仅能快速导出项目结构，还支持将文件内容一键复制到剪贴板，非常适合编写技术文档、提交 Issue 或向 AI 助手提供上下文代码。
+Built specifically for developers and power users:  
+- Instantly export clean project structures (respecting `.gitignore`-style rules)  
+- Copy file content or directory trees to clipboard with **one click via right-click menu**  
+- Perfect for writing documentation, submitting GitHub Issues, or sharing context with AI assistants  
+
+专为开发者与高效用户打造：  
+- 一键导出干净的项目结构（支持 `.gitignore` 风格忽略规则）  
+- 通过**右键菜单**，一键将文件内容或目录树复制到剪贴板  
+- 完美适用于编写技术文档、提交 Issue 或向 AI 助手提供上下文  
 
 ---
 
@@ -15,18 +22,18 @@ It is built specifically for developers: not only can it quickly export project 
 
 | Feature / 功能 | Description / 说明 |
 |----------------|--------------------|
-| **Tree Generation**<br>**目录树生成** | Quickly generates indented, symbol-enhanced directory trees. Output can be sent to terminal, file, or clipboard.<br>快速生成带缩进和符号的目录结构，支持输出到终端、文件或剪贴板。 |
-| **Context Menu Integration**<br>**右键菜单集成** | Registers two convenient actions into Windows Explorer’s right-click menu—no command line needed.<br>将两个便捷操作注册到 Windows 资源管理器右键菜单，无需打开命令行。 |
-| **Smart Ignore System**<br>**智能忽略系统** | Supports `.treeignore` configuration files with syntax compatible with core `.gitignore` rules (root anchors, wildcards, path matching).<br>支持 `.treeignore` 配置文件，语法兼容 `.gitignore` 核心规则（根锚定、通配符、路径匹配）。 |
-| **Content Extraction**<br>**文件内容提取** | Automatically detects text encoding (UTF-8, GBK, BOM, etc.) and safely copies content to the clipboard.<br>自动识别文本编码（UTF-8/GBK/BOM 等），安全地将内容复制到剪贴板。 |
-| **Full Unicode Support**<br>**完整 Unicode 支持** | Full Unicode/UTF-8 pipeline ensures perfect handling of international paths, filenames, and content (Chinese, Japanese, Korean, Cyrillic, etc.).<br>全链路 Unicode/UTF-8 内核，完美支持多语言路径、文件名及内容（中文、日文、韩文、俄文等）。 |
+| **High-Performance Tree Generation**<br>**高性能目录树生成** | Traverses millions of files in seconds with **<2MB memory footprint**. Outputs to terminal, file, or clipboard with standard `├──`/`└──` symbols.<br>秒级遍历百万级文件，**内存占用 <2MB**。支持标准树形符号输出到终端、文件或剪贴板。 |
+| **Smart Context Menu Integration**<br>**智能右键菜单集成** | Two zero-friction actions:<br>- Right-click **folder or background** → “Generate Tree File”<br>- Right-click **any text file** → “Copy File Content”<br>无需命令行，操作高效直观。 |
+| **Git-Compatible Ignore System**<br>**Git 风格忽略系统** | Supports `.treeignore` with core `.gitignore` syntax: root anchors (`/build`), path matching (`src/temp`), dir-only (`logs/`), and wildcards (`*.log`).<br>支持 `.treeignore`，兼容 `.gitignore` 核心语法：根锚定、路径匹配、目录限定、通配符。 |
+| **Auto Encoding Detection**<br>**自动编码识别** | Safely reads and copies text files in UTF-8, UTF-8-BOM, GBK, and more — no garbled Chinese!<br>智能识别 UTF-8/GBK/BOM 等编码，中文内容复制不乱码。 |
+| **Full Unicode Support**<br>**完整 Unicode 支持** | End-to-end wide-string pipeline ensures perfect handling of Chinese, Japanese, Korean, Cyrillic, and emoji in paths, filenames, and content.<br>全链路宽字符处理，完美支持多语言路径、文件名及内容（含表情符号）。 |
+| **Portable & Green**<br>**绿色便携，无痕运行** | Single `CTree.exe` file (~200KB). No installer, no background process, no DLLs.<br>单文件 EXE（约 200KB），无需安装，无后台进程，无外部依赖。 |
 
 ---
 
 ## 🌳 Output Example / 输出示例
 
-The directory tree generated by CTree uses the **standard tree indentation symbols** (`├──`, `└──`, `│`), automatically adding `\` after folders to distinguish them from files, clearly showing the nesting hierarchy, and **perfectly supporting Unicode paths and file names**:  
-CTree 生成的目录树采用**标准的树形缩进符号**（`├──`、`└──`、`│`），自动在文件夹后加 `\` 以区分文件夹和文件，清晰展示嵌套层级，并**完美支持 Unicode 路径与文件名**：
+CTree uses **standard tree indentation symbols** (`├──`, `└──`, `│`) and **appends `\` to folder names** for clear visual distinction. It **fully supports Unicode paths and filenames**:
 
 ```text
 CTreeTest\
@@ -56,194 +63,156 @@ CTreeTest\
 └── 测试.cpp
 ```
 
-> 💡 This output can be safely pasted into GitHub Issues, documentation, or chat tools without formatting issues.  
-> 💡 该输出可直接粘贴到 GitHub Issue、技术文档或聊天工具中，格式稳定不乱码。
+> 💡 This output is **format-safe** — paste directly into GitHub, Notion, Discord, or email without corruption.  
+> 💡 该输出**格式稳定**，可直接粘贴到 GitHub、Notion、Discord 或邮件中，不会错乱。
 
 ---
 
 ## 🚀 Quick Start / 快速开始
 
-### Installation & Integration (Portable, No Installer)  
-### 安装与集成（绿色便携，无需安装）
+### Installation (Portable, No Installer)  
+### 安装（绿色便携，无需安装）
 
 1. **Download `CTree.exe`**  
-   下载 `CTree.exe` 并放置在任意目录（建议加入系统 `PATH` 环境变量）。  
-   👉 [GitHub Releases](https://github.com/CikeZZZ/CTree/releases)
+   👉 [GitHub Releases](https://github.com/CikeZZZ/CTree/releases)  
+   Place it anywhere (e.g., `C:\Tools\`). **Add to `PATH` for global CLI access**.
 
-2. **Add to Right-Click Menu**  
-   **添加右键菜单**：  
-   双击运行 `CTree.exe` 或在命令行中执行 `CTree.exe`。  
-   在交互界面中输入 `1`，即可注册以下两个右键功能：  
-   - Right-click on **a folder** or **folder background** → “Generate Tree File”  
-     在**文件夹上**或**目录空白处右键** → “生成目录树文件”  
-     > 📌 *Smart location detection*:  
-     > - Right-click **on a folder** → output file is generated **alongside** that folder.  
-     > - Right-click **on background** → output file is generated **inside** the current directory.  
-     > 📌 *智能位置判断*：  
-     > - **右键文件夹** → 在该文件夹**同级目录**生成树文件；  
-     > - **右键空白处** → 在**当前目录内部**生成树文件。  
-     > 永远让你一眼看到结果！
-   - Right-click on **any text file** → “Copy File Content”  
-     在**任意文本文件上右键** → “复制文件内容”
+2. **Enable Right-Click Menu**  
+   **启用右键菜单**：  
+   Run `CTree.exe` → Type `1` → Press Enter.  
+   Two actions will be registered:
+   - **Right-click on a folder or folder background** → “Generate Tree File”  
+     - 📌 *Smart output location*:  
+       - Right-click **on a folder** → tree file created **alongside** it.  
+       - Right-click **on background** → tree file created **inside** the current directory.  
+   - **Right-click on any text file** → “Copy File Content”
 
-3. **Remove from Right-Click Menu**  
+3. **Remove Right-Click Menu**  
    **移除右键菜单**：  
-   运行 `CTree.exe` 并在交互界面中输入 `2`，即可彻底清理所有注册表项，无残留。  
-   > 💡 **Note**: Integration only modifies the current user’s registry and leaves no background processes.  
-   > 💡 **注**：右键菜单仅修改当前用户注册表，无后台进程，安全可靠。
+   Run `CTree.exe` → Type `2` → Press Enter.  
+   > 💡 **Safe & clean**: Only modifies current-user registry. No traces left behind.
 
 ---
 
 ## 📖 CLI Usage / 命令行用法
 
 ```bash
-CTree.exe [command] [options]
+CTree.exe [options]
 ```
 
 ### Common Options / 常用选项
 
 | Option / 选项 | Description / 说明 |
 |---------------|--------------------|
-| `-i, --input <path>` | Specify the directory to scan. Required unless using `-c` with a single file.<br>指定要扫描的目录（除非使用 `-c` 复制单个文件，否则必填）。 |
-| `-o, --output [path]` | Output tree to a file. If no path is given, auto-generates `tree_YYYYMMDD_HHMMSS.txt`.<br>输出到文件；若省略路径，自动生成带时间戳的文件名（如 `tree_20251210_210000.txt`）。 |
-| `-c, --copy [path]` | • With `-i`: copies the generated tree to clipboard.<br>• With a file path: copies that file’s content to clipboard.<br>• 配合 `-i`：将生成的目录树复制到剪贴板。<br>• 指定文件路径：复制该文件内容到剪贴板。 |
-| `-n, --ignore <pattern>` | Add temporary ignore patterns (can be used multiple times).<br>临时添加忽略规则（可多次使用，如 `-n "*.log" -n "/temp"`）。 |
-| `-g, --global` | Create a global `.treeignore` template in `%USERPROFILE%`.<br>在用户目录（`%USERPROFILE%`）创建全局 `.treeignore` 模板。 |
-| `-l, --local` | Create a local `.treeignore` template in the current working directory.<br>在当前工作目录创建本地 `.treeignore` 模板。 |
-| `-d, --delete-global` | Remove the global `.treeignore` file from %USERPROFILE% if it exists.<br>若存在，则从 %USERPROFILE% 中移除全局 `.treeignore` 文件。 |
+| `-i, --input <path>` | Directory to scan. **Required** unless `-c <file>` is used.<br>指定扫描目录（除非使用 `-c` 复制单个文件，否则必填）。 |
+| `-o, --output [path]` | Output to file. If omitted, generates `tree_YYYYMMDD_HHMMSS.txt`.<br>输出到文件；省略路径则自动生成带时间戳的文件。 |
+| `-c, --copy [path]` | • With `-i`: copy tree to clipboard.<br>• With file path: copy file content to clipboard.<br>• 配合 `-i`：复制目录树到剪贴板。<br>• 指定路径：复制文件内容到剪贴板。 |
+| `-n, --ignore <pattern>` | Add temporary ignore rule (e.g., `-n "*.log" -n "/temp"`).<br>临时添加忽略规则（可多次使用）。 |
+| `-f, --file <path>` | Use custom ignore file (e.g., `-f .gitignore`).<br>使用自定义忽略配置文件。 |
+| `-g, --global` | Create global `.treeignore` in `%USERPROFILE%`.<br>在用户目录创建全局忽略模板。 |
+| `-l, --local` | Create local `.treeignore` in current directory.<br>在当前目录创建本地忽略模板。 |
+| `-d, --delete-global` | Delete global `.treeignore` if exists.<br>删除全局忽略文件。 |
+| `-h, --help` | Show help.<br>显示帮助。 |
+| `-v, --version` | Show version.<br>显示版本。 |
+
+> 🔁 **Ignore Precedence**: `-f` (explicit) > local `.treeignore` > global `.treeignore` > `-n` (temp rules)
 
 ---
 
 ## 🚫 Ignore Rules / 忽略规则说明
 
-CTree uses `.treeignore` files to filter out unwanted files or directories. The rule syntax is compatible with core `.gitignore` logic.  
-CTree 使用 `.treeignore` 文件过滤不需要显示的文件或目录，规则语法兼容 `.gitignore` 核心逻辑。
+CTree’s ignore engine supports the most useful subset of `.gitignore` syntax — **optimized for clarity and performance**.
 
-- **Comments**<br>**注释**  
-  Lines starting with `#`, or containing `//` or `\\`, are ignored.  
-  以 `#` 开头，或包含 `//`、`\\` 的行将被忽略。  
+- **Comments**  
+  Lines with `#`, `//`, or `\\` are ignored.  
   ```gitignore
   # This is a comment
-  // This line is also ignored
+  // Ignored line
   ```
 
-- **Path Separators**<br>**路径分隔符**  
-  `/` and `\` are treated as equivalent internally.  
-  系统内部将 `/` 和 `\` 视为完全等价。
+- **Path Separators**  
+  `/` and `\` are treated identically.
 
-- **Root Anchor**<br>**根锚定**  
-  Rules starting with `/` (e.g., `/build`) match only in the root directory.  
-  以 `/` 开头的规则（如 `/build`）仅匹配根目录下的项。
+- **Root Anchor**  
+  `/build` → matches **only** `build/` in the scan root.
 
-- **Path Match**<br>**路径匹配**  
-  Rules containing slashes in the middle (e.g., `src/debug`) match relative paths.  
-  中间包含斜杠的规则（如 `src/debug`）匹配相对路径。
+- **Path Match**  
+  `src/debug` → matches `src/debug/` anywhere under root.
 
-- **Directory Match**<br>**目录匹配**  
-  Rules ending with `/` (e.g., `temp/`) match only directories.  
-  以 `/` 结尾的规则（如 `temp/`）仅匹配目录。
+- **Directory Only**  
+  `temp/` → matches directories named `temp`, **not files**.
 
-- **Wildcards**<br>**通配符**  
-  Supports `*` (single-level) and limited `**` (multi-level, experimental).  
-  支持 `*`（单层匹配）和有限的 `**`（多层匹配，实验性）。  
-  ```gitignore
-  *.tmp         # Ignores all .tmp files
-  logs/**/*.log # Ignores .log files under logs/ at any depth (if ** is supported)
-  ```
+- **Wildcards**  
+  - `*` → single-segment wildcard (`*.log`, `temp*`)  
+  - `?` → single-character (`file?.txt`)  
+  - `**` → multi-level (experimental, use sparingly)
 
-> ⚠️ **Note**: `.treeignore` precedence: explicit (`-f`) > local > global. Regular expressions are **not** supported.  
-> ⚠️ **注意**：`.treeignore` 优先级：指定 (`-f`) > 本地 > 全局。**不支持正则表达式**。
+> ⚠️ **Not supported**: Regular expressions, negation (`!`), escape sequences.
 
 ---
 
 ## 🧪 Examples / 使用示例
 
-### 
-### 示例1：导入 `.gitignore` 规则，获取你的项目结构
+### Example 1: Export clean project structure using `.gitignore`
 ```cmd
-CTree.exe -i "C:\YourProject" -f "C:\YourProject\.gitignore" -n ".git/" -c
+CTree.exe -i "C:\MyProject" -f ".gitignore" -n ".git/" -c
 ```
-→ Filter the project content based on the specified `.gitignore` file. Additionally, forcibly ignore the `.git/` directory (as some projects are not explicitly declared in the `.gitignore` file). Display the directory tree in real-time in the terminal and automatically copy the complete result to the clipboard, making it convenient to paste it into an Issue, document, or AI conversation with just one click.  
-→ 根据指定的 `.gitignore` 文件过滤项目内容，额外强制忽略 `.git/` 目录（因部分项目未在 `.gitignore` 中显式声明），在终端实时显示目录树，并自动将完整结果复制到剪贴板，方便一键粘贴到 Issue、文档或 AI 对话中。
+→ Respects `.gitignore`, forces ignore `.git/`, outputs tree to terminal **and copies to clipboard**.
 
-### Example 2: Export project tree while ignoring build artifacts  
-### 示例 2：导出项目结构并忽略构建产物
+### Example 2: Generate timestamped tree file, ignoring noise
 ```cmd
-CTree.exe -i "D:\YourProject" -o -n "node_modules/" "/dist" "*.log"
+CTree.exe -i "D:\Code\App" -o -n "node_modules/" "/dist" "*.log"
 ```
-→ Generates `tree_20251210_210000.txt`, excluding `node_modules`, root-level `dist`, and log files.  
-→ 自动生成 `tree_20251210_210000.txt`，排除 `node_modules`、根目录 `dist` 和日志文件。
+→ Creates `tree_20251212_143000.txt` with clean structure.
 
-### Example 3: Copy README.md content to clipboard  
-### 示例 3：将 README.md 内容复制到剪贴板
+### Example 3: Copy file content (auto encoding detection)
 ```cmd
-CTree.exe -c "D:\YourProject\README.md"
+CTree.exe -c "README_zh.md"
 ```
 
-### Example 4: Generate tree and copy directly to clipboard  
-### 示例 4：生成树并直接复制到剪贴板（用于粘贴到聊天或文档）
-```cmd
-CTree.exe -i "C:\Code\App" -c
-```
-
-### Example 5: Initialize a local ignore file  
-### 示例 5：初始化本地忽略规则
+### Example 4: Initialize ignore template
 ```cmd
 CTree.exe -l
 ```
-→ Creates `.treeignore` in the current directory with common defaults (e.g., `*.exe`, `/bin`, `.git/`).  
-→ 在当前目录创建 `.treeignore`，包含常用默认规则（如 `*.exe`, `/bin`, `.git/` 等）。
+→ Creates `.treeignore` with sensible defaults (`*.exe`, `/bin`, `.git/`, etc.)
 
 ---
 
 ## ❓ FAQ / 常见问题
 
-**Q: The right-click menu doesn’t appear. What should I do?**  
-**Q：右键菜单没有出现怎么办？**  
-A: Run `CTree.exe` as a standard user (not Administrator), and ensure your antivirus isn’t blocking registry writes. You can manually verify these registry keys:  
-A：请以普通用户身份运行 `CTree.exe`（不要用管理员），并确保杀毒软件未拦截注册表写入。可手动检查以下注册表项：  
+**Q: Right-click menu doesn’t appear?**  
+A: Run as **standard user** (not Admin). Antivirus may block registry writes. Check keys:  
 - `HKEY_CLASSES_ROOT\Directory\Background\shell\CTree`  
 - `HKEY_CLASSES_ROOT\SystemFileAssociations\text\shell\CopyContent`
 
-**Q: Why do I see garbled Chinese characters?**  
-**Q：中文显示乱码？**  
-A: Right-click the console window title bar → Properties → Font, and choose a font that supports Chinese (e.g., Consolas, SimSun).  
-A：右键命令行窗口标题栏 → 属性 → 字体，选择支持中文的字体（如 Consolas、宋体）。
+**Q: Chinese characters look garbled in console?**  
+A: Right-click console title → Properties → Font → Choose **Consolas** or **SimSun**.
 
-**Q: Can I recursively ignore specific files in subdirectories?**  
-**Q：能否递归忽略子目录中的特定文件？**  
-A: Yes. Use `*.test` to match all `test` files at any level. Full `**` support is limited—prefer simple patterns.  
-A：可以。使用 `*.test` 可匹配任意层级的 `test` 文件。`**` 支持有限，建议优先使用简单通配符。
+**Q: Why recommend x86 version?**  
+A: **Yes, use x86!**  
+- Smaller pointers → better CPU cache efficiency → **faster I/O on large directories**  
+- Runs perfectly on **all Windows 7+ (32/64-bit)** via WOW64  
+- Smaller memory footprint → ideal for I/O-bound tool  
+> 💡 Unless you need native 64-bit, **always choose `CTree-*-win-x86.zip`**.
 
-**Q: How is this different from the built-in `tree` command?**  
-**Q：和 Windows 自带 `tree` 命令有什么区别？**  
-A: The native `tree` lacks ignore rules, often breaks with non-ASCII names, and cannot copy content. CTree is purpose-built for modern development workflows.  
-A：系统自带 `tree` 不支持忽略规则、中文易乱码、无法复制内容。CTree 专为现代开发场景优化。
-
-**Q: Which version is recommended for use?**  
-**Q：推荐使用哪个版本？**  
-A: We highly recommend the x86 (32-bit) version.  
-A：强烈推荐使用 x86（32 位）版本。  
-
-- CTree is an I/O-intensive tool focused on directory traversal. The 32-bit build uses smaller pointers and a more compact memory layout, which often leads to better performance when scanning directories with thousands of files—thanks to higher CPU cache efficiency.  
-- CTree 是一款以目录遍历为核心的 I/O 密集型工具。32 位版本因指针更小、内存布局更紧凑，在扫描包含大量文件的目录时，往往因更高的 CPU 缓存命中率而表现更优。  
-
-- Additionally, the x86 version runs perfectly on all Windows 7 and later systems (both 32-bit and 64-bit) via the built-in WOW64 compatibility layer—no drawbacks, just wider compatibility and better real-world speed.  
-- 此外，x86 版本通过 Windows 内置的 WOW64 兼容层，可在所有 Windows 7 及以上系统（包括 64 位）上完美运行——兼容性更强，实际速度更快，毫无劣势。  
-
-> 💡 **Tip**: Unless you have a specific requirement for a native 64-bit executable, choose `CTree-*-win-x86.zip`.  
-> 💡 **提示**：除非你明确需要原生 64 位程序，否则请优先选择 `CTree-*-win-x86.zip`。
+**Q: How is this better than Windows `tree`?**  
+A: `tree` breaks on Unicode, has no ignore rules, can’t copy to clipboard. CTree is built for **real-world dev workflows**.
 
 ---
 
 ## 📜 License / 许可证
 
-This project is licensed under the [MIT License](LICENSE)—free for personal and commercial use.  
-本项目采用 [MIT 许可证](LICENSE) —— 免费用于个人及商业用途。
+MIT License — free for personal and commercial use.  
+[See LICENSE](LICENSE)
 
 ---
 
-> 💬 **Contributions & Feedback Welcome!**  
-> If you have feature requests, bug reports, or ideas (e.g., JSON/YAML output, PowerShell alias), please open an issue or PR.  
-> 💬 **欢迎贡献与反馈！**  
-> 如果你有功能建议、发现 Bug，或希望支持更多格式（如 JSON/YAML 输出、PowerShell 别名），请提交 Issue 或 PR。
+> 💬 **Contributions Welcome!**  
+> Want JSON/YAML output? PowerShell alias? HTML with collapsible nodes?  
+> Open an issue or PR — let’s make CTree even more powerful!  
+> 💬 **欢迎贡献！**  
+> 希望支持 JSON/YAML？PowerShell 别名？可折叠 HTML？  
+> 欢迎提交 Issue 或 PR，一起让 CTree 更强大！
+```
+
+---
