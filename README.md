@@ -145,7 +145,6 @@ CTree’s ignore engine supports the most useful subset of `.gitignore` syntax �
 - **Wildcards**  
   - `*` → single-segment wildcard (`*.log`, `temp*`)  
   - `?` → single-character (`file?.txt`)  
-  - `**` → multi-level (experimental, use sparingly)
 
 > ⚠️ **Not supported**: Regular expressions, negation (`!`), escape sequences.
 
